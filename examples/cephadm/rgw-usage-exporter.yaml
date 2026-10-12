@@ -1,0 +1,20 @@
+# cephadm custom container spec for radosgw_usage_exporter.
+# See README.md in this directory; deploy with:
+#   ceph orch apply -i rgw-usage-exporter.yaml
+service_type: container
+service_id: rgw-usage-exporter
+placement:
+  count: 1
+spec:
+  # Pin a tag built from a known commit (sha-<short sha>), not latest.
+  image: ghcr.io/<owner>/radosgw_usage_exporter:sha-<short sha>
+  args:
+    - "--net=host"
+  ports:
+    - 9242
+  envs:
+    - RADOSGW_SERVER=http://<rgw host>:<rgw port>
+    - ACCESS_KEY=<access key>
+    - SECRET_KEY=<secret key>
+    - VIRTUAL_PORT=9242
+    - TIMEOUT=300

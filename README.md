@@ -122,6 +122,10 @@ ghcr.io/pando85/radosgw_usage_exporter:latest
 Resulting metrics can be then retrieved via your Prometheus server via the
 `http://<exporter host>:9242/metrics` endpoint.
 
+## cephadm
+
+To run the exporter as a cephadm custom container service, see `examples/cephadm`.
+
 ## Kubernetes
 
 You can find an example of deployment using [Rook](https://rook.io/) operator in a K8s environment
